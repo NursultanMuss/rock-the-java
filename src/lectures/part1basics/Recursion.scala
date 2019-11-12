@@ -1,4 +1,4 @@
-package lectures
+package lectures.part1basics
 
 import scala.annotation.tailrec
 
@@ -16,23 +16,35 @@ object Recursion extends App {
   println(37 % 18)
 
   def isPrimeTailRecursive(n: Int):Boolean = {
-    def isPrimeUntil(t: Int):Boolean =
-      if(t <= 1) true
-    else n % t !=0 && isPrimeUntil(t-1)
+    def isPrimeUntil(t: Int, isStillPrime:Boolean):Boolean =
+      if(!isStillPrime) false
+    else if(t <= 1) true
+    else  isPrimeUntil(t-1,n % t !=0 && isStillPrime)
 
-    isPrimeUntil(n/2)
+    isPrimeUntil(n/2, true)
   }
+  println(isPrimeTailRecursive(2003))
 
   def fibonacciRec(n: Int): Int ={
     @tailrec
-    def fibonacciHelper1(x:Int, accumulator1: Int): Int=
-      if(x<=n)fibonacciHelper1(accumulator1,x+accumulator1)
-        else accumulator1
-    fibonacciHelper1(0,1)
+    def fibonacciHelper1(x:Int, last: Int, nextToLast: Int): Int=
+      if(x<=n)fibonacciHelper1(x+1, last+nextToLast, last)
+        else last
+    if( n <= 2)1
+
+    fibonacciHelper1(2,1,1)
   }
 
+  println(fibonacciRec(1))
+  println(fibonacciRec(2))
+  println(fibonacciRec(3))
+  println(fibonacciRec(4))
+  println(fibonacciRec(5))
   println(fibonacciRec(6))
   println(fibonacciRec(7))
+  println(fibonacciRec(8))
+  println(fibonacciRec(9))
+  println(fibonacciRec(10))
   // 1 1 2 3 5 8 13 21
   /*
   4
@@ -43,6 +55,7 @@ object Recursion extends App {
   3 5 a=5
   5 8 a=8
   8 13 a=13
+
 
    */
 
