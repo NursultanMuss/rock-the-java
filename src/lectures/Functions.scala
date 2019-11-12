@@ -14,11 +14,13 @@ object Functions extends App {
    if(n <= 2) 1 else fibonacciFunc(n-1) + fibonacciFunc(n-2)
   }
   println(fibonacciFunc(6))// 1 1 2 3 5 8 13 21
-
-  def isPrime(n: Int):Boolean ={
-    def isPrimeUntil (t:Int) :Boolean =
-      if(t <= 1) true else
-  }
+  //6   (5)+(4)
+  //5   (4)+(3)   4   (3)+(2)
+  //4   (3)+(2)   3   (2)+(1)
+//  def isPrime(n: Int):Boolean ={
+//    def isPrimeUntil (t:Int) :Boolean =
+//      if(t <= 1) true else
+//  }
 
 
 }
