@@ -1,4 +1,5 @@
 package lectures.part1oop
+import scala.language.postfixOps
 
 object OOP1 extends App {
 
@@ -12,6 +13,16 @@ object OOP1 extends App {
   val counter = new Counter
   counter.increment.print
   counter.increment(20).print
+
+  val person = new Person("Mary","я и ты");
+  println((person + "the Rock Star").name)
+
+  val mary = new Person1("Mary", "Pirates",21)
+  println((+mary).age)
+
+  println(mary learnScala)
+
+  println(mary(2))
 
 
 }
@@ -55,10 +66,14 @@ class Counter(val value: Int = 0){
 }
 
 class Person (val name: String, favoriteMovie:String){
-  def + (person: Person)=new Person(person.name+" the rockstar", favoriteMovie)
+  def + (nickName: String)=new Person(s"$name ($nickName)" , favoriteMovie)
 
 }
-class Person1 (val name: String, favoriteMovie:String, val age:Int){
-  def + (person: Person)=new Person(person.name+" the rockstar", favoriteMovie)
+class Person1 (val name: String, favoriteMovie:String, val age:Int =0, val learn:String = ""){
+  def + (person: Person)=new Person1(person.name+" the rockstar", favoriteMovie, age+1)
+  def unary_+ : Person1 = new Person1(name, favoriteMovie, age + 1)
+  def learns (whtLearned:String)= s"$name learns $whtLearned"
+  def learnScala = learns("Scala")
 
+  def apply(number: Int) = s"$name watched favorite movie $number times"
 }
