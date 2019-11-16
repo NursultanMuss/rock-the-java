@@ -1,4 +1,4 @@
-package lectures.part1oop
+package lectures.part2oop
 import scala.language.postfixOps
 
 object OOP1 extends App {
