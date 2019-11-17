@@ -20,7 +20,7 @@ abstract class My {
 
 }
 
-object Empty extends My{
+case object Empty extends My{
   override def head(): Int = throw new NoSuchElementException
 
   override def tail(): My = throw new NoSuchElementException
@@ -34,7 +34,7 @@ object Empty extends My{
 
 
 
-class Exercise_3(h: Int, t: My) extends My {
+case class Exercise_3(h: Int, t: My) extends My {
   override def head(): Int = h
 
   override def tail(): My = t
@@ -49,7 +49,7 @@ class Exercise_3(h: Int, t: My) extends My {
 }
 
 
-object ListTest extends App{
+case object ListTest extends App{
   val list = new Exercise_3(1, new Exercise_3(2, new Exercise_3(3, Empty)))
   println(list.head())
   println(list.add(4).head)
